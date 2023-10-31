@@ -3,11 +3,13 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package com.mycompany.sc304grupo3;
+
 /**
  *
  * @author chris
  */
 public class ListaCircular {
+
     NodoCircular cabeza;
     NodoCircular ultimo;
 
@@ -68,6 +70,13 @@ public class ListaCircular {
         }
 
         return respuesta;
+    }
+
+    public String imprimirRecursivo(NodoCircular nodo, NodoCircular fin) {
+        if (nodo == fin) {
+            return nodo.toString() + "\n";
+        }
+        return nodo.toString() + "\n" + imprimirRecursivo(nodo.getSiguiente(), fin);
     }
 
 }

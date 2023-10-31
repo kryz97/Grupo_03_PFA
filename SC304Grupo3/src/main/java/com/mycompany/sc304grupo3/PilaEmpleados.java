@@ -11,7 +11,8 @@ import javax.swing.JOptionPane;
  * @author chris
  */
 public class PilaEmpleados {
-        private NodoPila cima;
+
+    private NodoPila cima;
 
     public NodoPila getCima() {
         return cima;
@@ -73,5 +74,12 @@ public class PilaEmpleados {
         }
 
         return respuesta;
+    }
+
+    public String imprimirRecursivo(NodoPila nodo) {
+        if (nodo == null) {
+            return "";
+        }
+        return imprimirRecursivo(nodo.getSiguiente()) + nodo.getElemento().toString() + "\n";
     }
 }
