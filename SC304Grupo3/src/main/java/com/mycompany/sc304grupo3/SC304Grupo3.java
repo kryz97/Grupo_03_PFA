@@ -23,15 +23,15 @@ public class SC304Grupo3 {
         
         Ingredientes Ingredientes3 = new Ingredientes();
         Ingredientes3.solicitarDatos();
-        ListaCircular.inserta(Ingredientes2);
+        ListaCircular.inserta(Ingredientes3);
         
         Ingredientes Ingredientes4 = new Ingredientes();
         Ingredientes4.solicitarDatos();
-        ListaCircular.inserta(Ingredientes2);
+        ListaCircular.inserta(Ingredientes4);
         
         Ingredientes Ingredientes5 = new Ingredientes();
         Ingredientes5.solicitarDatos();
-        ListaCircular.inserta(Ingredientes2);
+        ListaCircular.inserta(Ingredientes5);
 
         System.out.println(ListaCircular.toString());
         System.out.println(ListaCircular.imprimirSiguienteDelUltimo());
