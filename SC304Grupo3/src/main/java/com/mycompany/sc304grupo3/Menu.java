@@ -13,6 +13,13 @@ import javax.swing.JOptionPane;
 public class Menu {
     private PilaEmpleados pilaEmpleados;
     private ListaCircular listaCircular;
+    private ColaClientes colaClientes;
+
+    public Menu() {
+        pilaEmpleados = new PilaEmpleados();
+        listaCircular = new ListaCircular();
+        colaClientes = new ColaClientes();
+    }
 
     public void iniciar() {
         boolean ejecutar = true;
@@ -38,14 +45,12 @@ public class Menu {
                     break;
 
                 case "3":
-                    System.out.println("Empleados en la pila (recursivo):");
-                    System.out.println(pilaEmpleados.imprimirRecursivo(pilaEmpleados.getCima()));
-                    System.out.println("Platillos en la lista circular (recursivo):");
-                    System.out.println(listaCircular.imprimirRecursivo(listaCircular.cabeza, listaCircular.ultimo));
+                    ImprimirEmpleados();
+                    ImprimirPlatillos();
                     break;
 
                 case "4":
-                    // Manejo de ordenes
+                    ManejoDeOrdenes();
                     break;
 
                 case "5":
@@ -57,5 +62,30 @@ public class Menu {
                     JOptionPane.showMessageDialog(null, "Opción no válida. Introduce una opción válida (1-5).");
             }
         }
+    }
+
+    public void ManejoDeOrdenes() {
+        if (!colaClientes.estaVacia()) {
+            Cliente cliente = colaClientes.atenderCliente();
+            JOptionPane.showMessageDialog(null, "Atendiendo cliente: " + cliente.getNombre());
+
+            // Procesa el cliente aquí
+
+            JOptionPane.showMessageDialog(null, "Procesado cliente: " + cliente.getNombre());
+        } else {
+            JOptionPane.showMessageDialog(null, "No hay clientes en la cola.");
+        }
+    }
+
+    public void ImprimirEmpleados() {
+        String empleados = "Empleados en la pila (recursivo):\n";
+        empleados += pilaEmpleados.imprimirRecursivo(pilaEmpleados.getCima());
+        JOptionPane.showMessageDialog(null, empleados);
+    }
+
+    public void ImprimirPlatillos() {
+        String platillos = "Platillos en la lista circular (recursivo):\n";
+        platillos += listaCircular.imprimirRecursivo(listaCircular.cabeza, listaCircular.ultimo);
+        JOptionPane.showMessageDialog(null, platillos);
     }
 }
