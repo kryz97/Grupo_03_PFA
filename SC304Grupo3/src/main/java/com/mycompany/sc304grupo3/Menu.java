@@ -26,6 +26,7 @@ public class Menu {
         while (ejecutar) {
             String opcion = JOptionPane.showInputDialog(
                     "Menú de opciones:\n"
+                    "Escriba el numero correspondiente:\n"
                     + "1) Agregar empleados\n"
                     + "2) Agregar platillos\n"
                     + "3) Imprimir Empleados y platillos\n"
@@ -43,7 +44,7 @@ public class Menu {
                     ingredientes.solicitarDatos();
                     listaCircular.inserta(ingredientes);
                     break;
-
+//se imprimen los ingredientes llamando a los metedos
                 case "3":
                     ImprimirEmpleados();
                     ImprimirPlatillos();
@@ -56,6 +57,8 @@ public class Menu {
                 case "5":
                     JOptionPane.showMessageDialog(null, "Saliendo del programa.");
                     ejecutar = false;
+                    System.out.println("Se ha terminado el programa");
+
                     break;
 
                 default:
@@ -69,7 +72,7 @@ public class Menu {
             Cliente cliente = colaClientes.atenderCliente();
             JOptionPane.showMessageDialog(null, "Atendiendo cliente: " + cliente.getNombre());
 
-            // Procesa el cliente aquí
+            // Se Procesa el cliente aquí
 
             JOptionPane.showMessageDialog(null, "Procesado cliente: " + cliente.getNombre());
         } else {
