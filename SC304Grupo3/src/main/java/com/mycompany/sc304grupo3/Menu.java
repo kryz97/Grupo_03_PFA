@@ -25,7 +25,7 @@ public class Menu {
         boolean ejecutar = true;
         while (ejecutar) {
             String opcion = JOptionPane.showInputDialog(
-                    "Menú de opciones:\n"
+                    "Menú de opciones:\n" +
                     "Escriba el numero correspondiente:\n"
                     + "1) Agregar empleados\n"
                     + "2) Agregar platillos\n"

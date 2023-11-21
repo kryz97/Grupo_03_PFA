@@ -13,6 +13,7 @@ public class Ingredientes {
     private String nombre;
     private double costo;
     private double precio;
+    private String tipoComida;
 
     public Ingredientes() {
         
@@ -55,6 +56,14 @@ public class Ingredientes {
 
     public void setPrecio(double precio) {
         this.precio = precio;
+    }
+    
+    public String getTipoComida() {
+        return tipoComida;
+    }
+
+    public void setTipoComida(String tipoComida) {
+        this.tipoComida = tipoComida;
     }
 
     public void solicitarDatos() {
