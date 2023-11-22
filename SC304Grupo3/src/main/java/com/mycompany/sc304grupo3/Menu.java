@@ -11,14 +11,17 @@ import javax.swing.JOptionPane;
  * @author chris
  */
 public class Menu {
+
     private PilaEmpleados pilaEmpleados;
     private ListaCircular listaCircular;
     private ColaClientes colaClientes;
+    private ListaDoble listaOrdenes;
 
     public Menu() {
         pilaEmpleados = new PilaEmpleados();
         listaCircular = new ListaCircular();
         colaClientes = new ColaClientes();
+        listaOrdenes = new ListaDoble();
     }
 
     public void iniciar() {
@@ -26,17 +29,18 @@ public class Menu {
         while (ejecutar) {
             String opcion = JOptionPane.showInputDialog(
                     "Menú de opciones:\n" +
-                    "Escriba el numero correspondiente:\n"
-                    + "1) Agregar empleados\n"
-                    + "2) Agregar platillos\n"
-                    + "3) Imprimir Empleados y platillos\n"
-                    + "4) Manejo de ordenes\n"
-                    + "5) Salir"
+                            "Escriba el numero correspondiente:\n"
+                            + "1) Agregar empleados\n"
+                            + "2) Agregar platillos\n"
+                            + "3) Imprimir Empleados y platillos\n"
+                            + "4) Manejo de ordenes\n"
+                            + "5) Salir"
             );
 
             switch (opcion) {
                 case "1":
                     pilaEmpleados.apilar();
+                    
                     break;
 
                 case "2":
@@ -44,7 +48,7 @@ public class Menu {
                     ingredientes.solicitarDatos();
                     listaCircular.inserta(ingredientes);
                     break;
-//se imprimen los ingredientes llamando a los metedos
+
                 case "3":
                     ImprimirEmpleados();
                     ImprimirPlatillos();
@@ -58,7 +62,6 @@ public class Menu {
                     JOptionPane.showMessageDialog(null, "Saliendo del programa.");
                     ejecutar = false;
                     System.out.println("Se ha terminado el programa");
-
                     break;
 
                 default:
@@ -81,13 +84,13 @@ public class Menu {
     }
 
     public void ImprimirEmpleados() {
-        String empleados = "Empleados en la pila (recursivo):\n";
+        String empleados = "Empleados en la pila:\n";
         empleados += pilaEmpleados.imprimirRecursivo(pilaEmpleados.getCima());
         JOptionPane.showMessageDialog(null, empleados);
     }
 
     public void ImprimirPlatillos() {
-        String platillos = "Platillos en la lista circular (recursivo):\n";
+        String platillos = "Platillos en la lista:\n";
         platillos += listaCircular.imprimirRecursivo(listaCircular.cabeza, listaCircular.ultimo);
         JOptionPane.showMessageDialog(null, platillos);
     }
