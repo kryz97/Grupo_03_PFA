@@ -9,14 +9,17 @@ package com.mycompany.sc304grupo3;
  * @author chris
  */
 public class Empleado {
-        private int ID;
+
+    private int ID;
     private String nombre;
     private String puesto;
 
-    public Empleado() {
-        this.ID = 0;
-        this.nombre = "";
-        this.puesto = "";
+    public Empleado(){}
+
+    public Empleado(int ID, String nombre, String puesto) {
+        this.ID = ID;
+        this.nombre = nombre;
+        this.puesto = puesto;
     }
 
     public int getID() {
@@ -41,5 +44,10 @@ public class Empleado {
 
     public void setPuesto(String puesto) {
         this.puesto = puesto;
+    }
+    
+        @Override
+    public String toString() {
+        return this.ID + " - " + this.nombre +" - " + this.puesto;
     }
 }

@@ -9,11 +9,20 @@ package com.mycompany.sc304grupo3;
  * @author chris
  */
 public class NodoPila {
-        private Empleado elemento;
+    private Empleado dato;
     private NodoPila siguiente;
+    
+    public NodoPila (Empleado dato)
+    {
+        this.dato = dato;
+    }
 
-    public NodoPila() {
-        this.siguiente = null;
+    public Empleado getDato() {
+        return dato;
+    }
+
+    public void setDato(Empleado dato) {
+        this.dato = dato;
     }
 
     public NodoPila getSiguiente() {
@@ -24,11 +33,8 @@ public class NodoPila {
         this.siguiente = siguiente;
     }
 
-    public Empleado getElemento() {
-        return elemento;
-    }
-
-    public void setElemento(Empleado elemento) {
-        this.elemento = elemento;
+    @Override
+    public String toString() {
+        return this.dato.toString();
     }
 }

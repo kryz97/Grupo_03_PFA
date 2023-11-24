@@ -54,7 +54,7 @@ public class ListaDoble {
 
     @Override
     public String toString() {
-        String respuesta = "Lista doble circular de órdenes: \n";
+        String respuesta = "Lista de órdenes: \n";
 
         if (cabeza != null) {
             NodoOrdenes aux = cabeza;

@@ -9,26 +9,36 @@ package com.mycompany.sc304grupo3;
  * @author karen
  */
 class NodoCliente {
-    private Cliente cliente;
-    private NodoCliente siguiente;
+    private String Cliente;
+    private NodoCliente atras;
 
-    public NodoCliente(Cliente cliente) {
-        this.cliente = cliente;
-        siguiente = null;
+    public NodoCliente(String dato) {
+        this.Cliente = dato;
     }
 
-
-
-    public Cliente getCliente() {
-        return cliente;
+    public String getDato() {
+        return Cliente;
     }
 
-    public NodoCliente getSiguiente() {
-        return siguiente;
+    public void setDato(String dato) {
+        this.Cliente = dato;
     }
 
-    public void setSiguiente(NodoCliente siguiente) {
-        this.siguiente = siguiente;
+    public NodoCliente getAtras() {
+        return atras;
     }
+
+    public void setAtras(NodoCliente atras) {
+        this.atras = atras;
+    }
+    
+    @Override
+    public String toString() {
+        return this.Cliente;
+    }
+    
+    
 }
+
+
 

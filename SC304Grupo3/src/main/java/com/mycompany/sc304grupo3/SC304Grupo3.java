@@ -9,10 +9,9 @@ package com.mycompany.sc304grupo3;
  */
 public class SC304Grupo3 {
     public static void main(String[] args) {
-       //Main del archivo
-        //Llamar la clase Menu 
+       //Main del archivo 
         System. out. println("Bienvenido al programa");
-        Menu Menu =new Menu();
-        Menu.iniciar();
+        Menu menu = new Menu();
+        menu.play();
     }
 }

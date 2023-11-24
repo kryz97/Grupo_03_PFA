@@ -4,83 +4,48 @@
  */
 package com.mycompany.sc304grupo3;
 
-import javax.swing.JOptionPane;
-
 /**
  *
  * @author chris
  */
 public class PilaEmpleados {
 
-    private NodoPila cima;
+    private NodoPila cabeza;
 
-    public NodoPila getCima() {
-        return cima;
-    }
-
-    public void setCima(NodoPila cima) {
-        this.cima = cima;
-    }
-
-    public PilaEmpleados() {
-        this.cima = null;
-    }
-
-    public boolean esVacia() {
-        return cima == null;
-    }
-
-    public void apilar() {
-        Empleado empleado = new Empleado();
-
-        empleado.setID(Integer.parseInt(JOptionPane.showInputDialog(null, "Digite el ID del empleado:")));
-        empleado.setNombre(JOptionPane.showInputDialog(null, "Digite el nombre del empleado:"));
-        empleado.setPuesto(JOptionPane.showInputDialog(null, "Digite el puesto del empleado:"));
-
-        NodoPila nuevo = new NodoPila();
-        nuevo.setElemento(empleado);
-
-        if (esVacia()) {
-            cima = nuevo;
+    public void insertar(Empleado p) {
+        if (cabeza == null) {
+            cabeza = new NodoPila(p);
         } else {
-            nuevo.setSiguiente(cima);
-            cima = nuevo;
-        }
-    }
+            if (p.getID() < cabeza.getDato().getID()) {
+                NodoPila auxiliar = new NodoPila(p);
+                auxiliar.setSiguiente(cabeza);
+                cabeza = auxiliar;
+            } else {
+                if (cabeza.getSiguiente() == null) {
+                    cabeza.setSiguiente(new NodoPila(p));
+                } else {
+                    NodoPila auxiliar = cabeza;
+                    while (auxiliar.getSiguiente() != null
+                            && auxiliar.getSiguiente().getDato().getID() < p.getID()) {
 
-    public void desapilar() {
-        if (!esVacia()) {
-            cima = cima.getSiguiente();
-            JOptionPane.showMessageDialog(null, "El empleado fue retirado de la pila.");
-        } else {
-            JOptionPane.showMessageDialog(null, "No se pueden retirar empleados de una pila vacía.");
-        }
-    }
-
-    public String imprimirPila() {
-        String respuesta = "";
-
-        if (!esVacia()) {
-            NodoPila temp = cima;
-            while (temp != null) {
-                respuesta += "ID: " + temp.getElemento().getID() + "\n";
-                respuesta += "Nombre: " + temp.getElemento().getNombre() + "\n";
-                respuesta += "Puesto: " + temp.getElemento().getPuesto() + "\n";
-                respuesta += "\n";
-                temp = temp.getSiguiente();
+                        auxiliar = auxiliar.getSiguiente();
+                    }
+                    NodoPila nuevo = new NodoPila(p);
+                    nuevo.setSiguiente(auxiliar.getSiguiente());
+                    auxiliar.setSiguiente(nuevo);
+                }
             }
-        } else {
-            respuesta = "La pila de empleados está vacía.";
         }
+    }
 
+    @Override
+    public String toString() {
+        String respuesta = "";
+        NodoPila auxiliar = cabeza;
+        while (auxiliar != null) {
+            respuesta += auxiliar.toString() + " ";
+            auxiliar = auxiliar.getSiguiente();
+        }
         return respuesta;
     }
-
-    public String imprimirRecursivo(NodoPila nodo) {
-        if (nodo == null) {
-            return "";
-        }
-        return imprimirRecursivo(nodo.getSiguiente()) + nodo.getElemento().toString() + "\n";
-    }
-
 }

@@ -9,14 +9,12 @@ package com.mycompany.sc304grupo3;
  * @author karen
  */
 public class NodoArbolPlatillo {
-    private Ingredientes platillo;
-    private NodoArbolPlatillo izquierdo;
-    private NodoArbolPlatillo derecho;
+    private Ingredientes  platillo;
+    private NodoArbolPlatillo hijoIzq;
+    private NodoArbolPlatillo hijoDer;
 
     public NodoArbolPlatillo(Ingredientes platillo) {
         this.platillo = platillo;
-        this.izquierdo = null;
-        this.derecho = null;
     }
 
     public Ingredientes getPlatillo() {
@@ -27,24 +25,22 @@ public class NodoArbolPlatillo {
         this.platillo = platillo;
     }
 
-    public NodoArbolPlatillo getIzquierdo() {
-        return izquierdo;
+    public NodoArbolPlatillo getHijoIzq() {
+        return hijoIzq;
     }
 
-    public void setIzquierdo(NodoArbolPlatillo izquierdo) {
-        this.izquierdo = izquierdo;
+    public void setHijoIzq(NodoArbolPlatillo hijoIzq) {
+        this.hijoIzq = hijoIzq;
     }
 
-    public NodoArbolPlatillo getDerecho() {
-        return derecho;
+    public NodoArbolPlatillo getHijoDer() {
+        return hijoDer;
     }
 
-    public void setDerecho(NodoArbolPlatillo derecho) {
-        this.derecho = derecho;
+    public void setHijoDer(NodoArbolPlatillo hijoDer) {
+        this.hijoDer = hijoDer;
     }
-
-    public String getTipoComida() {
-        return platillo.getTipoComida();
-    }
+    
+    
 }
 

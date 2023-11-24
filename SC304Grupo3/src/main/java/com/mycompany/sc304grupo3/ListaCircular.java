@@ -19,14 +19,14 @@ public class ListaCircular {
             ultimo = cabeza;
             ultimo.setSiguiente(cabeza);
         } else {
-            if (p.getId() < cabeza.getDato().getId()) {
+            if (p.getID() < cabeza.getDato().getID()) {
                 // Insertamos al inicio
                 NodoCircular auxiliar = new NodoCircular(p);
                 auxiliar.setSiguiente(cabeza);
                 cabeza = auxiliar;
                 ultimo.setSiguiente(cabeza);
             } else {
-                if (ultimo.getDato().getId() < p.getId()) {
+                if (ultimo.getDato().getID()< p.getID()) {
                     // Insertamos al final
                     NodoCircular auxiliar = new NodoCircular(p);
                     ultimo.setSiguiente(auxiliar);
@@ -35,7 +35,7 @@ public class ListaCircular {
                 } else {
                     // Insertamos en el medio de la lista
                     NodoCircular auxiliar = cabeza;
-                    while (auxiliar.getSiguiente().getDato().getId() < p.getId()) {
+                    while (auxiliar.getSiguiente().getDato().getID() < p.getID()) {
                         auxiliar = auxiliar.getSiguiente();
                     }
 
@@ -53,7 +53,7 @@ public class ListaCircular {
 
     @Override
     public String toString() {
-        String respuesta = "Lista circular: \n";
+        String respuesta = "Menu de restaurante: \n";
 
         NodoCircular auxiliar = cabeza;
 
@@ -71,12 +71,4 @@ public class ListaCircular {
 
         return respuesta;
     }
-
-    public String imprimirRecursivo(NodoCircular nodo, NodoCircular fin) {
-        if (nodo == fin) {
-            return nodo.toString() + "\n";
-        }
-        return nodo.toString() + "\n" + imprimirRecursivo(nodo.getSiguiente(), fin);
-    }
-
 }

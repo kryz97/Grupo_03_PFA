@@ -9,38 +9,59 @@ package com.mycompany.sc304grupo3;
  * @author karen
  */
 class ColaClientes  {
-    private NodoCliente frente;
-    private NodoCliente fin;
+   private NodoCliente Frente;
+   private NodoCliente Ultimo;
 
-    public ColaClientes() {
-        frente = null;
-        fin = null;
+    public NodoCliente getFrente() {
+        return Frente;
     }
 
-    public boolean estaVacia() {
-        return frente == null;
+    public void setFrente(NodoCliente Frente) {
+        this.Frente = Frente;
     }
 
-    public void agregarCliente(Cliente cliente) {
-        NodoCliente nuevo = new NodoCliente(cliente);
-        if (estaVacia()) {
-            frente = nuevo;
-            fin = nuevo;
-        } else {
-            fin.setSiguiente(nuevo);
-            fin = nuevo;
-        }
+    public NodoCliente getUltimo() {
+        return Ultimo;
     }
 
-    public Cliente atenderCliente() {
-        if (!estaVacia()) {
-            Cliente cliente = frente.getCliente();
-            frente = frente.getSiguiente();
-            if (frente == null) {
-                fin = null;
-            }
-            return cliente;
-        }
-        return null;
+    public void setUltimo(NodoCliente Ultimo) {
+        this.Ultimo = Ultimo;
     }
+   
+   public void Fila (NodoCliente elemento){
+       
+       if (Frente == null){
+           Frente=elemento;
+           Ultimo=elemento;
+       }
+       else{
+           Ultimo.setAtras(elemento);
+           Ultimo=elemento;
+       }
+   }
+   
+   public NodoCliente Atender (){
+       NodoCliente Actual = Frente;
+   
+       if (Frente != null){
+           Frente = Frente.getAtras();
+           Actual.setAtras(null);
+       
+       }
+       return Actual;
+   }
+   
+   public String imprimir(){
+       String respuesta = " ";
+       NodoCliente Actual = Frente;
+       
+       while(Actual != null){
+           respuesta += Actual.getDato() + " - ";
+           Actual = Actual.getAtras();
+       }
+       
+       return respuesta;
+
+   }
+   
 }

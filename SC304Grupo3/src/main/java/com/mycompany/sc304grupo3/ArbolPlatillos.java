@@ -9,28 +9,31 @@ package com.mycompany.sc304grupo3;
  * @author karen
  */
 public class ArbolPlatillos {
-private NodoArbolPlatillo raiz;
 
-    public ArbolPlatillos() {
-        this.raiz = null;
+    private NodoArbolPlatillo raiz;
+
+    public void inserta(Ingredientes platillo) {
+        if (raiz == null) {
+            raiz = new NodoArbolPlatillo(platillo);
+        } else {
+            insertaRecursivo(raiz, platillo);
+        }
     }
 
-    public void insertarPlatillo(Ingredientes platillo) {
-        raiz = insertarRecursivo(raiz, platillo);
-    }
-
-    private NodoArbolPlatillo insertarRecursivo(NodoArbolPlatillo nodo, Ingredientes platillo) {
-        if (nodo == null) {
-            return new NodoArbolPlatillo(platillo);
+    private void insertaRecursivo(NodoArbolPlatillo nodo, Ingredientes platillo) {
+        if (platillo.getTipoComida().compareTo(nodo.getPlatillo().getTipoComida()) <= 0) {
+            if (nodo.getHijoIzq() == null) {
+                nodo.setHijoIzq(new NodoArbolPlatillo(platillo));
+            } else {
+                insertaRecursivo(nodo.getHijoIzq(), platillo);
+            }
+        } else {
+            if (nodo.getHijoDer() == null) {
+                nodo.setHijoDer(new NodoArbolPlatillo(platillo));
+            } else {
+                insertaRecursivo(nodo.getHijoDer(), platillo);
+            }
         }
-
-        if (platillo.getTipoComida().compareTo(nodo.getPlatillo().getTipoComida()) < 0) {
-            nodo.setIzquierdo(insertarRecursivo(nodo.getIzquierdo(), platillo));
-        } else if (platillo.getTipoComida().compareTo(nodo.getPlatillo().getTipoComida()) > 0) {
-            nodo.setDerecho(insertarRecursivo(nodo.getDerecho(), platillo));
-        }
-
-        return nodo;
     }
 
     public void imprimirPorTipoComida(String tipoComida) {
@@ -40,13 +43,14 @@ private NodoArbolPlatillo raiz;
 
     private void imprimirRecursivoPorTipoComida(NodoArbolPlatillo nodo, String tipoComida) {
         if (nodo != null) {
-            imprimirRecursivoPorTipoComida(nodo.getIzquierdo(), tipoComida);
+            imprimirRecursivoPorTipoComida(nodo.getHijoIzq(), tipoComida);
 
-            if (nodo.getPlatillo().getTipoComida().equals(tipoComida)) {
-                System.out.println(nodo.getPlatillo().getNombre());
+            if (nodo.getPlatillo().getTipoComida() != null && nodo.getPlatillo().getTipoComida().equals(tipoComida)) {
+                System.out.println(nodo.getPlatillo());
             }
 
-            imprimirRecursivoPorTipoComida(nodo.getDerecho(), tipoComida);
+            imprimirRecursivoPorTipoComida(nodo.getHijoDer(), tipoComida);
         }
     }
+    
 }

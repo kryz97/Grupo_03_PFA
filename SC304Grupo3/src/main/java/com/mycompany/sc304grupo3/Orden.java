@@ -25,20 +25,40 @@ public class Orden {
         return id;
     }
 
+    public void setId(int id) {
+        this.id = id;
+    }
+
     public String getNombreCliente() {
         return nombreCliente;
+    }
+
+    public void setNombreCliente(String nombreCliente) {
+        this.nombreCliente = nombreCliente;
     }
 
     public String getPlatillo() {
         return platillo;
     }
 
+    public void setPlatillo(String platillo) {
+        this.platillo = platillo;
+    }
+
     public double getMonto() {
         return monto;
     }
 
+    public void setMonto(double monto) {
+
+        this.monto = monto;
+    }
+
+
+
     @Override
     public String toString() {
+        monto = monto+(monto*0.10);
         return id + " - " + nombreCliente + " - " + platillo + " - $" + monto;
     }
 }

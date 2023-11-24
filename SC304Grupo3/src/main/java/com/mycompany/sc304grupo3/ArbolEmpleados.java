@@ -9,7 +9,7 @@ package com.mycompany.sc304grupo3;
  * @author karen
  */
 public class ArbolEmpleados {
-    private NodoArbolEmpleado raiz;
+private NodoArbolEmpleado raiz;
 
     public ArbolEmpleados() {
         this.raiz = null;
@@ -24,9 +24,9 @@ public class ArbolEmpleados {
             return new NodoArbolEmpleado(empleado);
         }
 
-        if (empleado.getPuesto().compareTo(nodo.getEmpleado().getPuesto()) < 0) {
+        if (empleado.getPuesto().compareToIgnoreCase(nodo.getEmpleado().getPuesto()) < 0) {
             nodo.setIzquierdo(insertarRecursivo(nodo.getIzquierdo(), empleado));
-        } else if (empleado.getPuesto().compareTo(nodo.getEmpleado().getPuesto()) > 0) {
+        } else if (empleado.getPuesto().compareToIgnoreCase(nodo.getEmpleado().getPuesto()) > 0) {
             nodo.setDerecho(insertarRecursivo(nodo.getDerecho(), empleado));
         }
 
@@ -42,7 +42,7 @@ public class ArbolEmpleados {
         if (nodo != null) {
             imprimirRecursivoPorPuesto(nodo.getIzquierdo(), puesto);
 
-            if (nodo.getEmpleado().getPuesto().equals(puesto)) {
+            if (nodo.getEmpleado().getPuesto().equalsIgnoreCase(puesto)) {
                 System.out.println(nodo.getEmpleado().getNombre());
             }
 
