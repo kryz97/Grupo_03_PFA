@@ -16,10 +16,10 @@ public class Menu {
 
     public void play() {
 
-        while (start != 7) {
+        while (start != 8) {
             JOptionPane.showConfirmDialog(null, "Opcion 1: Ver a los empleados\nOpcion 2: Ver Menu de Platillos\n"+
             "Opcion 3: Ver los clientes en cola\nOpcion 4: Ver las ordenes pendietes\nOpcion 5: Ver Menu por categoria\n"+
-                    "Opcion 6: Ver los empleados por puesto\nOpcion 7: Salir");
+                    "Opcion 6: Ver los empleados por puesto\nOpcion 7: Ver Balance\nOpcion 8: Salir");
             start = Integer.parseInt(JOptionPane.showInputDialog(null, "Ingrese la opcion que desea ver"));
             switch (start) {
                 case 1:
@@ -41,6 +41,9 @@ public class Menu {
                     running.EmpleadoArbol();
                     break;
                 case 7:
+                     running.BalanceGrafo();
+                    break;
+                case 8:
                     break;
             }
         }
